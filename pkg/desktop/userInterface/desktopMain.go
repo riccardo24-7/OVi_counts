@@ -27,7 +27,7 @@ func MainDesktopApp() fyne.Window {
 	mainPanels := mainInterface{
 		homePage: "Главная",
 		planPage: "План",
-		factPage: "Факт",
+		factPage: "Фак",
 	}
 
 	homeLabels := createwidget.CreateLabels(mainPanels.homePage, mainPanels.planPage, mainPanels.factPage)
