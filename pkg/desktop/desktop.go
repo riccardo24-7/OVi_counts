@@ -12,7 +12,6 @@ type MoneyFlow struct {
 }
 
 type OperationServices struct {
-	Title            string
 	IncomeAction     string
 	ProcentByDeposit string
 	OtherInput       string
