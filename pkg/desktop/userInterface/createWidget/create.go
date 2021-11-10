@@ -1,6 +1,8 @@
 package createwidget
 
 import (
+	"fmt"
+
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/widget"
 )
@@ -13,30 +15,37 @@ func CreateLabels(str ...string) []*widget.Label {
 	return newLabel
 }
 
-func CreateListsLabel(arrList []string) *widget.List {
-	listTitles := widget.NewList(
+func CreateListLabels(labels []string) *widget.List {
+
+	list := widget.NewList(
 		func() int {
-			return len(arrList)
+			return len(labels)
 		},
 		func() fyne.CanvasObject {
-			return widget.NewLabel("template")
+			return widget.NewLabel("Поступления по операционной деятельности")
 		},
 		func(i widget.ListItemID, o fyne.CanvasObject) {
-			o.(*widget.Label).SetText(arrList[i])
+
+			o.(*widget.Label).SetText(labels[i])
 		})
-	return listTitles
+
+	return list
 }
 
-func CreateListsEntry(arrList []string) *widget.List {
+func CreateListEntry(length int, entries []float64) *widget.List {
+	var dataStr []string
+	for _, val := range entries {
+		dataStr = append(dataStr, fmt.Sprint(val))
+	}
 	listEntries := widget.NewList(
 		func() int {
-			return len(arrList)
+			return length
 		},
 		func() fyne.CanvasObject {
 			return widget.NewEntry()
 		},
 		func(i widget.ListItemID, o fyne.CanvasObject) {
-			o.(*widget.Entry).Show()
+			o.(*widget.Entry).SetPlaceHolder(dataStr[i])
 		})
 	return listEntries
 }
